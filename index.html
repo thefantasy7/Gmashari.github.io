@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mashari Almusaed | Chief Technology Officer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terminal-green: #00ff41;
+            --terminal-cyan: #00d4ff;
+            --terminal-yellow: #fffb00;
+            --terminal-red: #ff0040;
+            --terminal-bg: #0a0a0a;
+            --terminal-dim: #1a1a1a;
+        }
+        
+        * {
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        }
+        
+        body {
+            background-color: var(--terminal-bg);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        .terminal-green { color: var(--terminal-green); }
+        .terminal-cyan { color: var(--terminal-cyan); }
+        .terminal-yellow { color: var(--terminal-yellow); }
+        .terminal-red { color: var(--terminal-red); }
+        .terminal-dim { color: #666; }
+        
+        .cursor::after {
+            content: '█';
+            animation: blink 1s infinite;
+            color: var(--terminal-green);
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.3;
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        
+        .glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        
+        .border-terminal {
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            border-color: var(--terminal-green);
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .command {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .command::before {
+            content: '$';
+            position: absolute;
+            left: 0;
+            color: var(--terminal-green);
+        }
+        
+        .comment {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .progress-bar {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            height: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--terminal-green), var(--terminal-cyan));
+            height: 100%;
+            box-shadow: 0 0 10px var(--terminal-green);
+            transition: width 1.5s ease-out;
+        }
+        
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--terminal-green);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--terminal-green) }
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border: 1px solid var(--terminal-green);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--terminal-green);
+        }
+    </style>
+</head>
+<body class="antialiased grid-bg">
+    <div class="scanline"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur border-b border-gray-800 z-40 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="terminal-green font-bold text-lg glow">mashari@cto:~$</div>
+            <div class="hidden md:flex space-x-8 text-sm">
+                <a href="#about" class="hover:text-green-400 transition-colors">./about</a>
+                <a href="#expertise" class="hover:text-green-400 transition-colors">./expertise</a>
+                <a href="#experience" class="hover:text-green-400 transition-colors">./experience</a>
+                <a href="#certs" class="hover:text-green-400 transition-colors">./certs</a>
+                <a href="#contact" class="hover:text-green-400 transition-colors">./contact</a>
+            </div>
+            <div class="md:hidden terminal-green">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl w-full">
+            <div class="mb-8">
+                <span class="terminal-dim">// Executive Technology Leader</span>
+            </div>
+            
+            <div class="mb-6">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="terminal-green glow">Mashari Almusaed</span>
+                </h1>
+                <div class="text-xl md:text-2xl terminal-cyan glow-cyan mb-6 typing" style="max-width: 600px;">
+                    Chief Technology Officer | Digital Transformation Strategist
+                </div>
+            </div>
+
+            <div class="comment mb-8 max-w-2xl">
+                <p class="mb-2">// 21+ years driving technology strategy and enterprise-wide digital transformation</p>
+                <p class="mb-2">// Bridging governance, security, and innovation at scale</p>
+                <p>// Aligning IT capabilities with organizational vision and business outcomes</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 text-sm">
+                <div class="border-terminal p-4 hover-glow bg-black/50">
+                    <span class="terminal-green">$</span> location<br>
+                    <span class="terminal-cyan">Saudi Arabia</span>
+                </div>
+                <div class="border-terminal p-4 hover-glow bg-black/50">
+                    <span class="terminal-green">$</span> experience<br>
+                    <span class="terminal-cyan">21+ years</span>
+                </div>
+                <div class="border-terminal p-4 hover-glow bg-black/50">
+                    <span class="terminal-green">$</span> focus<br>
+                    <span class="terminal-cyan">Enterprise Architecture</span>
+                </div>
+            </div>
+
+            <div class="mt-12 animate-bounce">
+                <span class="terminal-dim">↓ Scroll to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+                <span class="comment">01 // whoami</span>
+                <h2 class="text-3xl font-bold terminal-green mt-2 glow">Executive Profile</h2>
+            </div>
+
+            <div class="border-terminal p-6 bg-black/30 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-2 text-xs terminal-dim">about.txt</div>
+                
+                <div class="command mb-4">
+                    <span class="text-gray-400">cat</span> <span class="terminal-cyan">executive_profile.txt</span>
+                </div>
+                
+                <div class="pl-5 space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        Technology executive with <span class="terminal-green glow">21+ years</span> of executive and senior leadership experience across government and enterprise environments in Saudi Arabia. Proven ability to drive technology strategy, lead large-scale digital transformation, and align IT capabilities with organizational vision and business outcomes.
+                    </p>
+                    <p>
+                        Currently operating at the intersection of <span class="terminal-cyan">technology, governance, and business strategy</span> as Senior Manager of Information Security at Team Saudi. Leading enterprise-wide initiatives that strengthen digital platforms, modernize technology governance, and ensure secure, scalable architectures aligned with national digital transformation goals.
+                    </p>
+                    <p>
+                        Track record includes overseeing multidisciplinary teams, managing <span class="terminal-yellow">multimillion-riyal budgets</span>, and enabling technology decisions that support growth, resilience, and innovation. Recognized through multiple awards for excellence in IT strategy and technology execution.
+                    </p>
+                    <p class="terminal-green">
+                        Passionate about using technology as a strategic enabler—driving innovation, improving operational performance, and positioning organizations for sustainable growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 px-6 bg-black/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-12">
+                <span class="comment">02 // Core Competencies</span>
+                <h2 class="text-3xl font-bold terminal-cyan mt-2 glow-cyan">Strategic Expertise</h2>
+            </div>
+
+            <div class="command mb-6">
+                <span class="text-gray-400">ls</span> <span class="terminal-yellow">-la</span> <span class="terminal-cyan">skills/</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Skill 1 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-green font-bold">Digital Transformation</span>
+                        <span class="text-xs terminal-dim">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Large-scale transformation programs, cloud adoption, data center modernization, enterprise system integration</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-green font-bold">Enterprise Architecture</span>
+                        <span class="text-xs terminal-dim">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Designing robust, scalable architectures aligned with business objectives and technology roadmaps</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-green font-bold">Cybersecurity & Governance</span>
+                        <span class="text-xs terminal-dim">98%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 98%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Information security leadership, regulatory compliance, risk management, secure-by-design principles</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-green font-bold">IT Strategy & Leadership</span>
+                        <span class="text-xs terminal-dim">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Translating business objectives into actionable technology roadmaps, building high-performing teams</p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-cyan font-bold">Cloud & Infrastructure</span>
+                        <span class="text-xs terminal-dim">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Cloud adoption strategies, digital infrastructure optimization, hybrid environments</p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="border-terminal p-6 hover-glow bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="terminal-cyan font-bold">Budget & Vendor Management</span>
+                        <span class="text-xs terminal-dim">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-400">Multimillion-riyal budget oversight, vendor negotiations, cost optimization, resource allocation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-12">
+                <span class="comment">03 // Career Trajectory</span>
+                <h2 class="text-3xl font-bold terminal-green mt-2 glow">Executive Experience</h2>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Current Role -->
+                <div class="border-l-2 border-terminal-green pl-6 relative hover-glow p-4 border-terminal">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-green-500 rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h3 class="text-xl font-bold terminal-cyan">Senior Manager, Information Security</h3>
+                        <span class="terminal-yellow text-sm font-mono">[ Current ]</span>
+                    </div>
+                    <div class="terminal-green mb-3">Team Saudi</div>
+                    <ul class="space-y-2 text-gray-400 text-sm list-disc list-inside">
+                        <li>Lead enterprise-wide initiatives strengthening digital platforms and modernizing technology governance</li>
+                        <li>Oversee multidisciplinary teams and multimillion-riyal budgets</li>
+                        <li>Ensure secure, scalable architectures aligned with national digital transformation goals</li>
+                        <li>Enable technology decisions supporting growth, resilience, and innovation at national level</li>
+                    </ul>
+                </div>
+
+                <!-- Previous Role 1 -->
+                <div class="border-l-2 border-gray-700 pl-6 relative hover-glow p-4 border-terminal ml-1">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-gray-500 rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h3 class="text-xl font-bold terminal-cyan">Director of ICT</h3>
+                        <span class="terminal-dim text-sm font-mono">[ Previous ]</span>
+                    </div>
+                    <div class="terminal-green mb-3">Saudi Arabian Olympic Committee</div>
+                    <ul class="space-y-2 text-gray-400 text-sm list-disc list-inside">
+                        <li>Led complex transformation programs including cloud adoption and data center modernization</li>
+                        <li>Managed enterprise system integration and digital infrastructure optimization</li>
+                        <li>Enhanced operational efficiency and service delivery across organizational units</li>
+                        <li>Ensured robust security and compliance frameworks for critical sports infrastructure</li>
+                    </ul>
+                </div>
+
+                <!-- Previous Role 2 -->
+                <div class="border-l-2 border-gray-700 pl-6 relative hover-glow p-4 border-terminal ml-1">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-gray-500 rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h3 class="text-xl font-bold terminal-cyan">Senior IT Project Manager</h3>
+                        <span class="terminal-dim text-sm font-mono">[ Previous ]</span>
+                    </div>
+                    <div class="terminal-green mb-3">SDAIA (Saudi Data and AI Authority)</div>
+                    <ul class="space-y-2 text-gray-400 text-sm list-disc list-inside">
+                        <li>Drove digital transformation initiatives at national data and AI authority</li>
+                        <li>Managed large-scale IT projects aligning with Kingdom's Vision 2030 objectives</li>
+                        <li>Facilitated cross-functional collaboration between technology and government stakeholders</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 border-terminal bg-black/20">
+                <div class="command text-sm">
+                    <span class="terminal-yellow">echo</span> "Awards & Recognition: Multiple excellence awards for IT strategy and technology execution"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certs" class="py-20 px-6 bg-black/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12">
+                <span class="comment">04 // Credentials</span>
+                <h2 class="text-3xl font-bold terminal-cyan mt-2 glow-cyan">Professional Certifications</h2>
+            </div>
+
+            <div class="command mb-6">
+                <span class="text-gray-400">find</span> <span class="terminal-cyan">/credentials</span> <span class="terminal-yellow">-name</span> <span class="text-white">"*.cert"</span> <span class="terminal-yellow">-type</span> f
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="border-terminal p-6 text-center hover-glow bg-black/30 group cursor-pointer">
+                    <div class="text-4xl mb-4 terminal-green group-hover:scale-110 transition-transform">🛡️</div>
+                    <h3 class="font-bold text-white mb-2">CISSP</h3>
+                    <p class="text-xs text-gray-400">Certified Information Systems Security Professional</p>
+                    <div class="mt-3 text-xs terminal-cyan">Active</div>
+                </div>
+
+                <div class="border-terminal p-6 text-center hover-glow bg-black/30 group cursor-pointer">
+                    <div class="text-4xl mb-4 terminal-red group-hover:scale-110 transition-transform">🔓</div>
+                    <h3 class="font-bold text-white mb-2">CEH</h3>
+                    <p class="text-xs text-gray-400">Certified Ethical Hacker</p>
+                    <div class="mt-3 text-xs terminal-cyan">Active</div>
+                </div>
+
+                <div class="border-terminal p-6 text-center hover-glow bg-black/30 group cursor-pointer">
+                    <div class="text-4xl mb-4 terminal-yellow group-hover:scale-110 transition-transform">📋</div>
+                    <h3 class="font-bold text-white mb-2">ITIL Foundation</h3>
+                    <p class="text-xs text-gray-400">IT Service Management Framework</p>
+                    <div class="mt-3 text-xs terminal-cyan">Active</div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 border-terminal">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="terminal-green">$</span>
+                    <span>verify_cert --holder "Mashari Almusaed" --status active</span>
+                </div>
+                <div class="mt-2 text-xs terminal-dim pl-5">
+                    > Verifying credentials...<br>
+                    > CISSP: Validated by (ISC)²<br>
+                    > CEH: Validated by EC-Council<br>
+                    > ITIL: Validated by AXELOS<br>
+                    <span class="terminal-green">> All certifications verified successfully ✓</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Focus -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+                <span class="comment">05 // Strategic Philosophy</span>
+                <h2 class="text-3xl font-bold terminal-green mt-2 glow">Technology as Enabler</h2>
+            </div>
+
+            <div class="border-terminal p-8 bg-black/30 relative">
+                <div class="absolute top-4 right-4 text-xs terminal-dim">strategy.md</div>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <span class="terminal-cyan font-bold">01.</span>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Digital Transformation</h4>
+                            <p class="text-gray-400 text-sm">Leveraging emerging technologies to deliver measurable value and operational excellence across enterprise ecosystems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <span class="terminal-cyan font-bold">02.</span>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Governance & Compliance</h4>
+                            <p class="text-gray-400 text-sm">Holistic, governance-driven approach ensuring regulatory alignment while fostering innovation and agility.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <span class="terminal-cyan font-bold">03.</span>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Team Building</h4>
+                            <p class="text-gray-400 text-sm">Building high-performing, multidisciplinary teams capable of executing complex technology initiatives at scale.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <span class="terminal-cyan font-bold">04.</span>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Sustainable Growth</h4>
+                            <p class="text-gray-400 text-sm">Positioning organizations for long-term success through resilient, scalable technology architectures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-black/80">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12">
+                <span class="comment">06 // Initiate Connection</span>
+                <h2 class="text-3xl font-bold terminal-green mt-2 glow">Get In Touch</h2>
+            </div>
+
+            <div class="border-terminal p-8 bg-black/50 max-w-2xl mx-auto">
+                <div class="command text-left mb-6">
+                    <span class="text-gray-400">cat</span> <span class="terminal-cyan">contact_info.txt</span>
+                </div>
+
+                <div class="space-y-4 text-left pl-5">
+                    <div class="flex items-center gap-4 hover:translate-x-2 transition-transform">
+                        <span class="terminal-yellow w-20">Email</span>
+                        <span class="text-gray-400">:</span>
+                        <a href="mailto:Gmashari@me.com" class="terminal-cyan hover:underline">Gmashari@me.com</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 hover:translate-x-2 transition-transform">
+                        <span class="terminal-yellow w-20">Phone</span>
+                        <span class="text-gray-400">:</span>
+                        <a href="tel:+966548688866" class="terminal-cyan hover:underline">+966 54 868 8866</a>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 hover:translate-x-2 transition-transform">
+                        <span class="terminal-yellow w-20">Location</span>
+                        <span class="text-gray-400">:</span>
+                        <span class="text-white">Saudi Arabia</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 hover:translate-x-2 transition-transform">
+                        <span class="terminal-yellow w-20">Role</span>
+                        <span class="text-gray-400">:</span>
+                        <span class="text-white">Chief Technology Officer (CTO)</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-800">
+                    <div class="command text-left text-sm terminal-dim">
+                        # Ready to discuss how my experience can contribute to your organization's technology strategy and long-term success.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <a href="mailto:Gmashari@me.com" class="inline-block border border-green-500 text-green-500 px-8 py-3 hover:bg-green-500 hover:text-black transition-all duration-300 font-bold">
+                    <span class="mr-2">$</span> ./send_message.sh
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800 text-center text-sm text-gray-600">
+        <div class="max-w-4xl mx-auto">
+            <div class="command justify-center mb-2">
+                <span class="terminal-green">echo</span> "© 2024 Mashari Almusaed | CTO Portfolio"
+            </div>
+            <div class="terminal-dim text-xs">
+                <span class="terminal-red">root</span>@<span class="terminal-cyan">mashari-almusaed</span>:~# <span class="cursor"></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.style.width;
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.progress-fill').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Random glitch effect on terminal elements
+        setInterval(() => {
+            const elements = document.querySelectorAll('.terminal-green, .terminal-cyan');
+            const randomEl = elements[Math.floor(Math.random() * elements.length)];
+            randomEl.style.textShadow = '2px 0 10px rgba(0,255,65,0.8), -2px 0 10px rgba(0,212,255,0.8)';
+            setTimeout(() => {
+                randomEl.style.textShadow = '';
+            }, 100);
+        }, 5000);
+    </script>
+</body>
+</html>
