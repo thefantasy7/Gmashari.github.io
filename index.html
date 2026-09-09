@@ -1,170 +1,141 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mashari Al-Musaed — Chief Information Security Officer, IT Executive, Digital Transformation Leader, and Cybersecurity & Technology Strategy executive.">
-  <meta name="author" content="Mashari Al-Musaed">
-  <title>Mashari Al-Musaed | CISO | IT Executive | Digital Transformation</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--green:#00ff41;--cyan:#00d4ff;--yellow:#fffb00;--red:#ff0040;--bg:#080808;--panel:#0d0d0d;--muted:#777}
-    *{font-family:'Fira Code','JetBrains Mono',monospace}
-    body{background:var(--bg);color:#e5e5e5;overflow-x:hidden}
-    .green{color:var(--green)} .cyan{color:var(--cyan)} .yellow{color:var(--yellow)} .red{color:var(--red)} .muted{color:var(--muted)}
-    .glow{text-shadow:0 0 12px rgba(0,255,65,.45)} .cyan-glow{text-shadow:0 0 12px rgba(0,212,255,.4)}
-    .grid-bg{background-image:linear-gradient(rgba(0,255,65,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,.025) 1px,transparent 1px);background-size:48px 48px}
-    .terminal-border{border:1px solid #303030;box-shadow:0 0 24px rgba(0,255,65,.06)}
-    .terminal-border:hover{border-color:var(--green);box-shadow:0 0 24px rgba(0,255,65,.14);transform:translateY(-2px);transition:.25s ease}
-    .command{position:relative;padding-left:22px}.command:before{content:'$';position:absolute;left:0;color:var(--green);font-weight:700}
-    .scan{position:fixed;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.09) 50%);background-size:100% 4px;pointer-events:none;z-index:50;opacity:.25}
-    .cursor:after{content:'█';color:var(--green);animation:blink 1s infinite;margin-left:3px}@keyframes blink{50%{opacity:0}}
-    .timeline{border-left:2px solid #222}.timeline-item:before{content:'';position:absolute;left:-9px;top:24px;width:14px;height:14px;border:2px solid var(--green);background:var(--bg);border-radius:50%}
-    .tag{border:1px solid #333;background:#0b0b0b;padding:.3rem .55rem;font-size:.72rem;color:#aaa}
-    a{transition:color .2s ease} a:hover{color:var(--green)}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Mashari Al-Musaed — Chief Information Security Officer, IT Executive, Digital Transformation Leader, and Cybersecurity & Technology Strategy executive.">
+<meta name="author" content="Mashari Al-Musaed">
+<title>Mashari Al-Musaed | CISO | IT Executive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#00ff41;--cyan:#00d4ff;--yellow:#fffb00;--red:#ff0040;--bg:#070707;--panel:#0d0d0d;--line:#292929;--muted:#777}
+*{font-family:'Fira Code','JetBrains Mono',monospace;box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#e6e6e6;overflow-x:hidden}
+.green{color:var(--green)}.cyan{color:var(--cyan)}.yellow{color:var(--yellow)}.red{color:var(--red)}.muted{color:var(--muted)}
+.glow{text-shadow:0 0 12px rgba(0,255,65,.45)}.cyan-glow{text-shadow:0 0 12px rgba(0,212,255,.4)}
+.grid-bg{background-image:linear-gradient(rgba(0,255,65,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,.025) 1px,transparent 1px);background-size:48px 48px}
+.scan{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.2;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.12) 50%);background-size:100% 4px}
+.terminal{border:1px solid var(--line);background:rgba(5,5,5,.72);box-shadow:0 0 28px rgba(0,255,65,.045);transition:.25s ease}
+.terminal:hover{border-color:var(--green);box-shadow:0 0 28px rgba(0,255,65,.13);transform:translateY(-2px)}
+.command{position:relative;padding-left:23px}.command:before{content:'$';position:absolute;left:0;color:var(--green);font-weight:700}
+.cursor:after{content:'█';color:var(--green);animation:blink 1s infinite;margin-left:4px}@keyframes blink{50%{opacity:0}}
+.timeline{border-left:2px solid #202020}.timeline-item:before{content:'';position:absolute;left:-9px;top:27px;width:14px;height:14px;border:2px solid var(--green);background:var(--bg);border-radius:50%;box-shadow:0 0 10px rgba(0,255,65,.3)}
+.tag{display:inline-block;border:1px solid #333;background:#0a0a0a;padding:.35rem .55rem;font-size:.68rem;color:#aaa}
+a{transition:.2s ease}a:hover{color:var(--green)}
+.hero-rule{height:1px;background:linear-gradient(90deg,var(--green),transparent)}
+@media(max-width:640px){.timeline{margin-left:2px}.terminal{box-shadow:none}}
+</style>
 </head>
 <body class="antialiased grid-bg">
-  <div class="scan"></div>
+<div class="scan"></div>
 
-  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur border-b border-gray-800 z-40 px-5 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="#top" class="green font-bold glow">mashari@executive:~$</a>
-      <div class="hidden md:flex gap-7 text-xs md:text-sm">
-        <a href="#profile">./profile</a><a href="#expertise">./expertise</a><a href="#experience">./experience</a><a href="#impact">./impact</a><a href="#credentials">./credentials</a><a href="#contact">./contact</a>
-      </div>
-    </div>
-  </nav>
+<nav class="fixed top-0 w-full bg-black/90 backdrop-blur border-b border-gray-800 z-40 px-5 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<a href="#top" class="green font-bold glow text-sm">mashari@executive:~$</a>
+<div class="hidden md:flex gap-6 text-xs">
+<a href="#profile">./profile</a><a href="#expertise">./expertise</a><a href="#experience">./experience</a><a href="#impact">./impact</a><a href="#credentials">./credentials</a><a href="#contact">./contact</a>
+</div></div></nav>
 
-  <main id="top">
-    <section class="min-h-screen flex items-center px-6 pt-24 pb-16">
-      <div class="max-w-6xl mx-auto w-full">
-        <div class="muted text-sm mb-7">// EXECUTIVE TECHNOLOGY & CYBERSECURITY LEADER</div>
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold green glow leading-tight">MASHARI AL-MUSAED</h1>
-        <div class="text-lg sm:text-2xl cyan cyan-glow mt-5 max-w-5xl">Chief Information Security Officer | IT Executive | Digital Transformation Leader | Cybersecurity & Technology Strategy</div>
-        <div class="mt-9 max-w-4xl text-gray-300 leading-8">
-          <p class="command">22+ years of progressive leadership across Information Technology, Cybersecurity, Digital Transformation, IT Infrastructure, Telecommunications, Cloud, Data Centers, Governance, Risk & Compliance, and Artificial Intelligence governance.</p>
-        </div>
-        <div class="grid md:grid-cols-4 gap-4 mt-10 text-sm">
-          <div class="terminal-border p-5 bg-black/40"><span class="green">$</span> location<br><span class="cyan">Riyadh, Saudi Arabia</span></div>
-          <div class="terminal-border p-5 bg-black/40"><span class="green">$</span> experience<br><span class="cyan">22+ years</span></div>
-          <div class="terminal-border p-5 bg-black/40"><span class="green">$</span> technical scale<br><span class="cyan">450+ professionals</span></div>
-          <div class="terminal-border p-5 bg-black/40"><span class="green">$</span> infrastructure<br><span class="cyan">150+ Tier III/IV data centers</span></div>
-        </div>
-        <div class="mt-12 muted text-xs">// Strategy → Architecture → Governance → Implementation → Operations → Security → Risk → Transformation → Executive Reporting<span class="cursor"></span></div>
-      </div>
-    </section>
+<main id="top">
+<section class="min-h-screen flex items-center px-6 pt-28 pb-16">
+<div class="max-w-6xl mx-auto w-full">
+<div class="muted text-xs sm:text-sm mb-5">// CISO • IT EXECUTIVE • DIGITAL TRANSFORMATION • CYBERSECURITY STRATEGY</div>
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold green glow leading-tight">MASHARI AL-MUSAED</h1>
+<div class="text-base sm:text-xl lg:text-2xl cyan cyan-glow mt-5 max-w-5xl leading-relaxed">Chief Information Security Officer | IT Executive | Digital Transformation Leader | Cybersecurity & Technology Strategy</div>
+<div class="hero-rule mt-8 max-w-3xl"></div>
+<p class="command mt-8 max-w-4xl text-gray-300 leading-8">22+ years translating enterprise and national objectives into secure, scalable technology strategies, operating models and transformation programs.</p>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+<div class="terminal p-5"><div class="green text-xs">$ location</div><div class="cyan mt-2">Riyadh, Saudi Arabia</div></div>
+<div class="terminal p-5"><div class="green text-xs">$ experience</div><div class="cyan mt-2">22+ years</div></div>
+<div class="terminal p-5"><div class="green text-xs">$ leadership</div><div class="cyan mt-2">450+ professionals</div></div>
+<div class="terminal p-5"><div class="green text-xs">$ infrastructure</div><div class="cyan mt-2">150+ Tier III/IV data centers</div></div>
+</div>
+<div class="mt-10 muted text-xs">// Strategy → Architecture → Governance → Security → Risk → Transformation → Executive Reporting<span class="cursor"></span></div>
+</div></section>
 
-    <section id="profile" class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <div class="mb-10"><span class="muted text-sm">01 // whoami</span><h2 class="text-3xl font-bold green glow mt-2">Executive Profile</h2></div>
-        <div class="terminal-border p-7 bg-black/30">
-          <div class="command mb-5"><span class="text-gray-400">cat</span> <span class="cyan">executive_profile.txt</span></div>
-          <div class="space-y-5 text-gray-300 leading-8">
-            <p>Visionary technology and cybersecurity executive with <strong class="green">22+ years</strong> of progressive leadership experience across government, financial services, aviation, energy, telecommunications, hospitality, and other highly regulated environments.</p>
-            <p>Proven ability to translate enterprise and national-level business objectives into <span class="cyan">secure, scalable technology strategies and operating models</span>, while advising executive leadership, boards, regulators, and government stakeholders.</p>
-            <p>Experienced in building and directing high-performance technical organizations of <strong class="yellow">450+ professionals</strong>, designing and delivering <strong class="yellow">150+ Tier III/IV data centers</strong>, developing enterprise cybersecurity and risk programs, and leading complex digital transformation initiatives aligned with Saudi Vision 2030.</p>
-            <p>Strong working knowledge of <span class="cyan">SAMA, NCA, ITIL, COBIT, ISO 27001, Zero Trust, cloud security, enterprise architecture, incident response, SOC operations, data center strategy, IT governance, and AI governance.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="profile" class="py-20 px-6">
+<div class="max-w-5xl mx-auto">
+<div class="mb-9"><span class="muted text-xs">01 // whoami</span><h2 class="text-3xl font-bold green glow mt-2">Executive Profile</h2></div>
+<div class="terminal p-7 sm:p-9">
+<div class="command mb-6"><span class="text-gray-400">cat</span> <span class="cyan">executive_profile.txt</span></div>
+<div class="space-y-5 text-gray-300 leading-8">
+<p>Visionary technology and cybersecurity executive with <strong class="green">22+ years</strong> of leadership across government, financial services, aviation, energy, telecommunications, hospitality and regulated environments.</p>
+<p>Combines deep technical expertise with executive leadership across <span class="cyan">cybersecurity, IT strategy, digital transformation, infrastructure, cloud, data centers, GRC and AI governance.</span></p>
+<p>Trusted advisor to executives, boards, regulators and government stakeholders, with a track record of leading <strong class="yellow">450+ professionals</strong>, supporting <strong class="yellow">150+ Tier III/IV data centers</strong>, and delivering national-scale technology and cybersecurity initiatives.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-7"><span class="tag">SAMA</span><span class="tag">NCA</span><span class="tag">ISO 27001</span><span class="tag">COBIT</span><span class="tag">ITIL</span><span class="tag">Zero Trust</span><span class="tag">Cloud Security</span><span class="tag">AI Governance</span></div>
+</div></div></section>
 
-    <section id="expertise" class="py-20 px-6 bg-black/50">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-10"><span class="muted text-sm">02 // ls -la capabilities/</span><h2 class="text-3xl font-bold cyan cyan-glow mt-2">Core Executive Capabilities</h2></div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="terminal-border p-6"><h3 class="green font-bold">IT Strategy & Technology Leadership</h3><p class="text-sm text-gray-400 mt-3">Enterprise strategy, technology roadmaps, operating models, executive leadership and technology decision-making.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold">Cybersecurity Strategy</h3><p class="text-sm text-gray-400 mt-3">Enterprise security strategy, security architecture, GRC, risk management, incident response and SOC strategy.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold">Digital Transformation</h3><p class="text-sm text-gray-400 mt-3">Cloud transformation, enterprise modernization, digital operating models and complex program delivery.</p></div>
-          <div class="terminal-border p-6"><h3 class="cyan font-bold">Enterprise Architecture</h3><p class="text-sm text-gray-400 mt-3">Secure, scalable architecture aligned to business objectives, national priorities and technology strategy.</p></div>
-          <div class="terminal-border p-6"><h3 class="cyan font-bold">Cloud & Cloud Security</h3><p class="text-sm text-gray-400 mt-3">Cloud strategy, security benchmarks, secure cloud architecture and Zero Trust implementation.</p></div>
-          <div class="terminal-border p-6"><h3 class="cyan font-bold">Critical Infrastructure & OT Security</h3><p class="text-sm text-gray-400 mt-3">Mission-critical environments, operational technology security, resilience and infrastructure protection.</p></div>
-          <div class="terminal-border p-6"><h3 class="yellow font-bold">Governance, Risk & Compliance</h3><p class="text-sm text-gray-400 mt-3">SAMA, NCA, ISO 27001, COBIT, ITIL, SOX, regulatory readiness and board reporting.</p></div>
-          <div class="terminal-border p-6"><h3 class="yellow font-bold">Data Centers & Infrastructure</h3><p class="text-sm text-gray-400 mt-3">Tier III/IV data centers, migration, networks, systems engineering, virtualization and telecommunications.</p></div>
-          <div class="terminal-border p-6"><h3 class="yellow font-bold">AI Governance</h3><p class="text-sm text-gray-400 mt-3">AI security, ethics, privacy, compliance, risk and responsible enterprise adoption, including generative AI security.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold">Vendor & Technology Management</h3><p class="text-sm text-gray-400 mt-3">Strategic sourcing, vendor governance, technology contracts, cost optimization and operational efficiency.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold">Program & PMO Leadership</h3><p class="text-sm text-gray-400 mt-3">National-scale technology programs, delivery governance, stakeholder coordination, scope, budget and timelines.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold">Business Resilience</h3><p class="text-sm text-gray-400 mt-3">Resilience strategy, advanced threat preparedness, incident response exercises and protection of critical assets.</p></div>
-        </div>
-      </div>
-    </section>
+<section id="expertise" class="py-20 px-6 bg-black/50">
+<div class="max-w-6xl mx-auto">
+<div class="mb-9"><span class="muted text-xs">02 // ls -la capabilities/</span><h2 class="text-3xl font-bold cyan cyan-glow mt-2">Executive Capabilities</h2></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+<div class="terminal p-6"><h3 class="green font-bold">IT Strategy & Leadership</h3><p class="text-sm text-gray-400 mt-3">Technology strategy, operating models, roadmaps, governance and executive decision-making.</p></div>
+<div class="terminal p-6"><h3 class="green font-bold">Cybersecurity Strategy</h3><p class="text-sm text-gray-400 mt-3">Enterprise security, GRC, risk, security architecture, SOC and incident response.</p></div>
+<div class="terminal p-6"><h3 class="green font-bold">Digital Transformation</h3><p class="text-sm text-gray-400 mt-3">Cloud transformation, modernization, digital operating models and program delivery.</p></div>
+<div class="terminal p-6"><h3 class="cyan font-bold">Enterprise Architecture</h3><p class="text-sm text-gray-400 mt-3">Secure, scalable architecture aligned with enterprise and national objectives.</p></div>
+<div class="terminal p-6"><h3 class="cyan font-bold">Cloud & Zero Trust</h3><p class="text-sm text-gray-400 mt-3">Cloud security benchmarks, secure architecture and Zero Trust implementation.</p></div>
+<div class="terminal p-6"><h3 class="cyan font-bold">Critical Infrastructure & OT</h3><p class="text-sm text-gray-400 mt-3">Mission-critical technology, OT security, resilience and infrastructure protection.</p></div>
+<div class="terminal p-6"><h3 class="yellow font-bold">GRC & Regulatory</h3><p class="text-sm text-gray-400 mt-3">SAMA, NCA, ISO 27001, COBIT, ITIL, SOX and regulatory readiness.</p></div>
+<div class="terminal p-6"><h3 class="yellow font-bold">Data Centers & Infrastructure</h3><p class="text-sm text-gray-400 mt-3">Tier III/IV strategy, migration, virtualization, networks and telecommunications.</p></div>
+<div class="terminal p-6"><h3 class="yellow font-bold">AI Governance</h3><p class="text-sm text-gray-400 mt-3">AI security, ethics, privacy, compliance, risk and responsible adoption.</p></div>
+</div></div></section>
 
-    <section id="experience" class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <div class="mb-12"><span class="muted text-sm">03 // history --executive</span><h2 class="text-3xl font-bold green glow mt-2">Professional Experience</h2></div>
-        <div class="timeline ml-2 pl-7 space-y-9">
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Confidential — SAMA-Regulated Financial Sector</h3><span class="cyan text-sm">Nov 2025 – Present</span></div><p class="yellow mt-2">Chief Information Security Officer (CISO)</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Lead enterprise-wide cybersecurity strategy and security transformation in a SAMA-regulated financial environment.</li><li>Align cyber strategy, threat mitigation, enterprise risk and resilience with stringent regulatory requirements.</li><li>Advise executive leadership and board-level stakeholders on systemic cyber risk, resilience, technology exposure and critical assets.</li><li>Direct sector-level incident response exercises and cross-organizational collaboration addressing advanced persistent threats.</li><li>Translate regulatory and security requirements into enterprise strategies, governance structures, controls and operating models.</li></ul></article>
+<section id="experience" class="py-20 px-6">
+<div class="max-w-5xl mx-auto">
+<div class="mb-11"><span class="muted text-xs">03 // history --executive</span><h2 class="text-3xl font-bold green glow mt-2">Professional Experience</h2></div>
+<div class="timeline ml-2 pl-7 space-y-7">
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Confidential — SAMA-Regulated Financial Sector</h3><span class="cyan text-xs">Nov 2025 – Present</span></div><p class="yellow mt-2">Chief Information Security Officer (CISO)</p><p class="text-sm text-gray-400 mt-4 leading-7">Leads enterprise cybersecurity strategy and security transformation; aligns cyber risk, threat mitigation and resilience with regulatory requirements; advises executive and board stakeholders; directs incident-response and APT exercises.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Government Entity</h3><span class="cyan text-xs">2026 – Present</span></div><p class="yellow mt-2">Project Management & Cybersecurity Strategy Consultant</p><p class="text-sm text-gray-400 mt-4 leading-7">Develops national-level cybersecurity strategies and security blueprints for mission-critical public infrastructure, including risk-based governance, cloud security benchmarks and Zero Trust across federal cloud networks.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Team Saudi</h3><span class="cyan text-xs">2022 – 2026</span></div><p class="yellow mt-2">Senior Manager – Information Security / Digital Transformation Director</p><p class="text-sm text-gray-400 mt-4 leading-7">Directed integrated IT, telecommunications, information security and digital transformation supporting high-profile national initiatives and unified technology operating models.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Semi-Government Entity</h3><span class="cyan text-xs">2019 – 2026</span></div><p class="yellow mt-2">Artificial Intelligence Governance Consultant</p><p class="text-sm text-gray-400 mt-4 leading-7">Advised on AI governance covering security, risk, ethics, privacy, compliance and responsible adoption, including generative AI security.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Independent / Confidential</h3><span class="cyan text-xs">2017 – Present</span></div><p class="yellow mt-2">Senior IT & Cybersecurity Consultant</p><p class="text-sm text-gray-400 mt-4 leading-7">Advises organizations on enterprise IT, cybersecurity, GRC and transformation; develops ITIL, COBIT and ISO 27001 frameworks and remediation roadmaps.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Saudi Olympic Committee</h3><span class="cyan text-xs">2021 – 2022</span></div><p class="yellow mt-2">IT & Communications Director</p><p class="text-sm text-gray-400 mt-4 leading-7">Led technology roadmap, infrastructure, communications and cyber perimeter. Renegotiated multi-million SAR vendor agreements and improved operational efficiency by 25%.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">SDAIA — Saudi Data & AI Authority</h3><span class="cyan text-xs">2020 – 2021</span></div><p class="yellow mt-2">Senior IT Project Manager</p><p class="text-sm text-gray-400 mt-4 leading-7">Delivered national-scale, high-visibility technology programs under scope, budget and timeline constraints with strong stakeholder and PMO governance.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">Dur Hospitality</h3><span class="cyan text-xs">2019 – 2020</span></div><p class="yellow mt-2">Corporate IT Manager / Technical Support Manager</p><p class="text-sm text-gray-400 mt-4 leading-7">Led enterprise cloud migration, technology modernization and ERP security hardening while supporting successful KPMG and EY security audits.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">RAWEC & Rabigh Power Company</h3><span class="cyan text-xs">2016 – 2019</span></div><p class="yellow mt-2">Lead Information Security Engineer / IT Manager</p><p class="text-sm text-gray-400 mt-4 leading-7">Led information security and IT for critical energy infrastructure, including vulnerability management, OT incident response, data center migration and SOX compliance.</p></article>
+<article class="timeline-item relative terminal p-6"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-lg font-bold green">SABIC • MAWANI • Airbus • Mobily • Hospitality</h3><span class="cyan text-xs">2004 – 2016</span></div><p class="yellow mt-2">Early Career Progression</p><p class="text-sm text-gray-400 mt-4 leading-7">Progressed through IT supervision, infrastructure, systems administration, networking and security roles across enterprise, telecom and data center environments.</p></article>
+</div></div></section>
 
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Government Entity</h3><span class="cyan text-sm">2026 – Present</span></div><p class="yellow mt-2">Project Management & Cybersecurity Strategy Consultant</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Develop national-level cybersecurity strategies and security blueprints for mission-critical public infrastructure.</li><li>Design risk-based governance frameworks for secure and resilient government technology environments.</li><li>Establish cloud security benchmarks and architecture principles for large-scale cloud environments.</li><li>Support Zero Trust security models across federal cloud networks.</li><li>Advise stakeholders on cybersecurity strategy, technology risk, governance, resilience and secure transformation.</li></ul></article>
+<section id="impact" class="py-20 px-6 bg-black/50">
+<div class="max-w-6xl mx-auto">
+<div class="mb-9"><span class="muted text-xs">04 // impact --metrics</span><h2 class="text-3xl font-bold yellow mt-2">Selected Executive Impact</h2></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="terminal p-6 text-center"><div class="text-3xl font-bold green">450+</div><div class="text-xs text-gray-400 mt-2">Professionals Led</div></div>
+<div class="terminal p-6 text-center"><div class="text-3xl font-bold cyan">150+</div><div class="text-xs text-gray-400 mt-2">Tier III/IV Data Centers</div></div>
+<div class="terminal p-6 text-center"><div class="text-3xl font-bold yellow">25%</div><div class="text-xs text-gray-400 mt-2">Operational Efficiency Improvement</div></div>
+<div class="terminal p-6 text-center"><div class="text-3xl font-bold green">22+</div><div class="text-xs text-gray-400 mt-2">Years Experience</div></div>
+<div class="terminal p-6 text-center"><div class="text-3xl font-bold cyan">2030</div><div class="text-xs text-gray-400 mt-2">Vision-Aligned Transformation</div></div>
+</div>
+<div class="terminal p-7 mt-6"><div class="command mb-4"><span class="text-gray-400">cat</span> <span class="cyan">executive_value.txt</span></div><p class="text-gray-300 leading-8">A lifecycle leadership model spanning <span class="green">strategy → architecture → governance → implementation → operations → cybersecurity → risk → compliance → transformation → executive reporting</span>.</p></div>
+</div></section>
 
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Team Saudi</h3><span class="cyan text-sm">2022 – 2026</span></div><p class="yellow mt-2">Senior Manager – Information Security / Digital Transformation Director</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Directed integrated IT, telecommunications, information security and digital transformation operations supporting high-profile national initiatives.</li><li>Developed scalable governance and technology policies to modernize service delivery while protecting critical digital assets.</li><li>Led technology and security transformation across complex stakeholder environments.</li><li>Integrated cybersecurity, infrastructure, telecommunications, governance and digital transformation into unified technology operating models.</li></ul></article>
+<section id="credentials" class="py-20 px-6">
+<div class="max-w-5xl mx-auto">
+<div class="mb-9"><span class="muted text-xs">05 // credentials --verified</span><h2 class="text-3xl font-bold cyan cyan-glow mt-2">Education, Certifications & Recognition</h2></div>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="terminal p-7"><div class="command mb-5"><span class="cyan">education/</span></div><div class="space-y-5"><div><div class="green font-bold">Master of Science — Network Engineering</div><div class="text-sm text-gray-400">University of Phoenix</div></div><div><div class="green font-bold">Bachelor of Science — Management Information Systems</div><div class="text-sm text-gray-400">Rutgers University</div></div></div></div>
+<div class="terminal p-7"><div class="command mb-5"><span class="cyan">certifications/</span></div><div class="flex flex-wrap gap-2"><span class="tag">ECSA</span><span class="tag">MCITP — Server Administrator</span><span class="tag">Scrum Fundamentals Certified</span><span class="tag">Apple Mac Developer Program Alumnus</span></div></div>
+<div class="terminal p-7 md:col-span-2"><div class="command mb-5"><span class="cyan">recognition/</span></div><div class="grid md:grid-cols-3 gap-5 text-sm text-gray-300"><div><span class="yellow">CIO of the Year</span><br>Recognized consecutively in 2021 and 2022.</div><div><span class="yellow">IT Transformer of the Year</span><br>Recognized for pioneering cloud migration and enterprise resilience models.</div><div><span class="yellow">Certificates of Excellence</span><br>Recognition from government and ministerial stakeholders for contributions to national defense initiatives.</div></div></div>
+</div></div></section>
 
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Semi-Government Entity</h3><span class="cyan text-sm">2019 – 2026</span></div><p class="yellow mt-2">Artificial Intelligence Governance Consultant</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Designed AI governance structures covering security, risk, ethics, compliance and responsible enterprise adoption.</li><li>Advised public-sector organizations on regulatory compliance, data privacy, AI security and generative AI deployment.</li><li>Established governance principles balancing AI innovation with security, privacy, regulatory and operational requirements.</li></ul></article>
+<section id="contact" class="py-20 px-6 bg-black/50">
+<div class="max-w-4xl mx-auto">
+<div class="mb-9"><span class="muted text-xs">06 // connect</span><h2 class="text-3xl font-bold green glow mt-2">Executive Contact</h2></div>
+<div class="terminal p-7 sm:p-9">
+<div class="command mb-6"><span class="text-gray-400">./connect.sh</span></div>
+<div class="grid sm:grid-cols-2 gap-5 text-sm">
+<a class="terminal p-5" href="mailto:gmashari@me.com"><span class="green">EMAIL</span><br><span class="text-gray-300">gmashari@me.com</span></a>
+<a class="terminal p-5" href="tel:+966548688866"><span class="green">PHONE</span><br><span class="text-gray-300">+966 54 868 8866</span></a>
+<a class="terminal p-5 sm:col-span-2" href="https://linkedin.com/in/gmishari" target="_blank" rel="noopener"><span class="green">LINKEDIN</span><br><span class="text-gray-300">linkedin.com/in/gmishari</span></a>
+</div>
+<div class="mt-8 muted text-xs">// Riyadh, Saudi Arabia <span class="cursor"></span></div>
+</div></div></section>
+</main>
 
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Independent / Confidential</h3><span class="cyan text-sm">2017 – Present</span></div><p class="yellow mt-2">Senior IT & Cybersecurity Consultant</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Advise mid-to-large organizations on enterprise IT, cybersecurity, governance, risk, compliance and technology transformation.</li><li>Architect enterprise ITIL, COBIT and ISO 27001 frameworks and remediation roadmaps.</li><li>Lead security and governance improvement initiatives supporting rigorous regulatory and audit readiness.</li></ul></article>
-
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Saudi Olympic Committee</h3><span class="cyan text-sm">2021 – 2022</span></div><p class="yellow mt-2">IT & Communications Director</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Directed the overarching technology roadmap, IT infrastructure, communications and cybersecurity perimeter.</li><li>Managed cross-border technology and infrastructure requirements and strengthened operational resilience.</li><li>Renegotiated multi-million-SAR vendor agreements and improved operational efficiency by <strong class="green">25%</strong>.</li></ul></article>
-
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">SDAIA — Saudi Data & AI Authority</h3><span class="cyan text-sm">2020 – 2021</span></div><p class="yellow mt-2">Senior IT Project Manager</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Managed high-visibility, national-scale technology programs under strict scope, budget and timeline requirements.</li><li>Coordinated complex stakeholders and delivery teams and established PMO practices supporting structured execution and governance.</li></ul></article>
-
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">Dur Hospitality</h3><span class="cyan text-sm">2019 – 2020</span></div><p class="yellow mt-2">Corporate IT Manager / Technical Support Manager</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Led enterprise cloud migration and technology modernization activities.</li><li>Directed ERP security hardening, corporate IT operations and security audit readiness.</li><li>Successfully defended organizational security posture during rigorous KPMG and EY audits.</li></ul></article>
-
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">RAWEC & Rabigh Power Company</h3><span class="cyan text-sm">2016 – 2019</span></div><p class="yellow mt-2">Lead Information Security Engineer / IT Manager</p><ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc pl-5"><li>Managed enterprise information security and IT operations in critical energy infrastructure environments.</li><li>Led vulnerability management, security remediation and operational technology incident response.</li><li>Executed physical-to-virtual data center migrations while maintaining security and operational requirements.</li><li>Supported strict SOX compliance requirements and enterprise security controls.</li></ul></article>
-
-          <article class="timeline-item relative terminal-border p-6 bg-black/30"><div class="flex flex-wrap justify-between gap-2"><h3 class="text-xl font-bold green">SABIC | MAWANI | Airbus | Mobily | Hospitality Sector</h3><span class="cyan text-sm">2004 – 2016</span></div><p class="yellow mt-2">Early Career Progression</p><p class="mt-4 text-sm text-gray-300">Progressive technology and infrastructure roles including IT Supervisor, Infrastructure Leader, System Administrator, Network Engineer and Security Specialist, building deep expertise across enterprise networking, systems engineering, infrastructure, telecommunications, data centers, information security and defensive security.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="impact" class="py-20 px-6 bg-black/50">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-10"><span class="muted text-sm">04 // ./impact --selected</span><h2 class="text-3xl font-bold cyan cyan-glow mt-2">Selected Executive Impact</h2></div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="terminal-border p-6"><div class="text-4xl green font-bold">450+</div><h3 class="font-bold mt-2">Professionals Led</h3><p class="text-sm text-gray-400 mt-2">High-performance technical organizations spanning technology operations, infrastructure, cybersecurity, telecommunications and transformation.</p></div>
-          <div class="terminal-border p-6"><div class="text-4xl cyan font-bold">150+</div><h3 class="font-bold mt-2">Tier III/IV Data Centers</h3><p class="text-sm text-gray-400 mt-2">Deep mission-critical infrastructure expertise across availability, resilience, security and data center strategy.</p></div>
-          <div class="terminal-border p-6"><div class="text-4xl yellow font-bold">25%</div><h3 class="font-bold mt-2">Operational Efficiency</h3><p class="text-sm text-gray-400 mt-2">Improvement achieved through vendor agreement renegotiation and operational optimization at the Saudi Olympic Committee.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold text-lg">Cybersecurity & Regulatory Leadership</h3><p class="text-sm text-gray-400 mt-3">Cybersecurity strategies and governance models across highly regulated environments with SAMA, NCA, ISO 27001, COBIT, ITIL and SOX exposure.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold text-lg">National & Government Programs</h3><p class="text-sm text-gray-400 mt-3">High-visibility technology and cybersecurity initiatives involving government and national-scale stakeholders.</p></div>
-          <div class="terminal-border p-6"><h3 class="green font-bold text-lg">Executive & Board Advisory</h3><p class="text-sm text-gray-400 mt-3">Experienced in communicating complex cybersecurity and technology risks to executive leadership, boards, regulators and senior government stakeholders.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="credentials" class="py-20 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-10"><span class="muted text-sm">05 // credentials</span><h2 class="text-3xl font-bold green glow mt-2">Education, Certifications & Recognition</h2></div>
-        <div class="grid lg:grid-cols-3 gap-6">
-          <div class="terminal-border p-6"><h3 class="cyan font-bold text-lg">Education</h3><div class="mt-5 space-y-4 text-sm"><div><span class="green">M.S.</span> — Network Engineering<br><span class="text-gray-400">University of Phoenix</span></div><div><span class="green">B.S.</span> — Management Information Systems<br><span class="text-gray-400">Rutgers University</span></div></div></div>
-          <div class="terminal-border p-6"><h3 class="cyan font-bold text-lg">Professional Credentials</h3><div class="mt-5 flex flex-wrap gap-2"><span class="tag">ECSA</span><span class="tag">MCITP — Server Administrator</span><span class="tag">Scrum Fundamentals Certified</span><span class="tag">Apple Mac Developer Program Alumnus</span></div></div>
-          <div class="terminal-border p-6"><h3 class="cyan font-bold text-lg">Honors & Recognition</h3><ul class="mt-5 space-y-3 text-sm text-gray-300"><li><span class="green">CIO of the Year</span> — recognized consecutively in 2021 and 2022.</li><li><span class="green">IT Transformer of the Year</span> — recognized for pioneering cloud migration and enterprise resilience models.</li><li><span class="green">Multiple Certificates of Excellence</span> — recognized by government and ministerial stakeholders for contributions to national defense initiatives.</li></ul></div>
-        </div>
-        <div class="terminal-border p-6 mt-6"><div class="command mb-4"><span class="text-gray-400">cat</span> <span class="cyan">technology_and_leadership.txt</span></div><div class="flex flex-wrap gap-2"><span class="tag">Enterprise Security Strategy</span><span class="tag">GRC</span><span class="tag">Risk Management</span><span class="tag">Incident Response</span><span class="tag">Security Operations</span><span class="tag">Zero Trust</span><span class="tag">Security Architecture</span><span class="tag">IT Strategy</span><span class="tag">Enterprise Architecture</span><span class="tag">Cloud Transformation</span><span class="tag">Tier III/IV Data Centers</span><span class="tag">Telecommunications</span><span class="tag">Critical Infrastructure</span><span class="tag">AI Governance</span><span class="tag">Generative AI Security</span><span class="tag">Data & AI Governance</span></div></div>
-      </div>
-    </section>
-
-    <section id="contact" class="py-20 px-6 bg-black/50">
-      <div class="max-w-5xl mx-auto">
-        <div class="mb-10"><span class="muted text-sm">06 // contact</span><h2 class="text-3xl font-bold green glow mt-2">Executive Contact</h2></div>
-        <div class="terminal-border p-7 bg-black/30">
-          <div class="command mb-6"><span class="text-gray-400">cat</span> <span class="cyan">contact.txt</span></div>
-          <div class="grid md:grid-cols-3 gap-5 text-sm">
-            <a class="terminal-border p-5" href="mailto:gmashari@me.com"><span class="green">email</span><br><span class="text-gray-300">gmashari@me.com</span></a>
-            <a class="terminal-border p-5" href="tel:+966548688866"><span class="green">phone</span><br><span class="text-gray-300">+966 54 868 8866</span></a>
-            <a class="terminal-border p-5" href="https://linkedin.com/in/gmishari" target="_blank" rel="noopener"><span class="green">linkedin</span><br><span class="text-gray-300">linkedin.com/in/gmishari</span></a>
-          </div>
-          <p class="mt-7 text-gray-400 text-sm leading-7">Available for executive technology, cybersecurity, digital transformation, governance, advisory and strategic leadership opportunities.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-gray-800 py-8 px-6 text-center text-xs muted">
-    <div>© 2026 Mashari Al-Musaed. Executive Technology & Cybersecurity Leadership.</div>
-    <div class="mt-2">// Built around strategy, security, resilience, transformation and responsible innovation.</div>
-  </footer>
+<footer class="border-t border-gray-800 px-6 py-8 text-center text-xs muted">MASHARI AL-MUSAED • CISO • IT EXECUTIVE • CYBERSECURITY & TECHNOLOGY STRATEGY<br><span class="green">// secure technology. resilient transformation. executive leadership.</span></footer>
 </body>
 </html>
